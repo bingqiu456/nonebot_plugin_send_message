@@ -1,0 +1,2 @@
+# nonebot_plugin_send_message
+一个支持双向聊天的传话插件，可用于临时聊天而不想加好友场景
