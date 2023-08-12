@@ -1,0 +1,14 @@
+[project]
+name = "nonebot_plugin_send_message"
+version = "2.0.0"
+description = "nonebot_plugin_send_message"
+readme = "README.md"
+requires-python = ">=3.8, <4.0"
+
+[tool.nonebot]
+adapters = [
+    { name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11" }
+]
+plugins = []
+plugin_dirs = ["nonebot_plugin_send_message"]
+builtin_plugins = []
