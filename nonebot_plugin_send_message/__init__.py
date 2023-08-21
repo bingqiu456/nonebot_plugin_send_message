@@ -18,7 +18,7 @@ __plugin_meta__ = PluginMetadata(
     type="application",
     config=Config,
     homepage="https://github.com/bingqiu456/nonebot_plugin_send_message",
-    supported_adapters="onebot v11"
+    supported_adapters={"~onebot.v11"}
 )
 
 async def dependency():
