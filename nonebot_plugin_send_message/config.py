@@ -1,6 +1,7 @@
-from nonebot import get_driver
-from nonebot.log import logger
+from pydantic import BaseModel
+from typing import List
 
-class Config():
-    message:str = get_driver().config.dict().get("welcome","你好呀")
-    friend_list:list = get_driver().config.dict().get("send_message",[])
+class Config(BaseModel):
+    welcome: str = ""
+    send_message: List[str] = []
+

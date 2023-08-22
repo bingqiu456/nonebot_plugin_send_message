@@ -2,7 +2,7 @@
 import setuptools
 setuptools.setup(
     name = "nonebot_plugin_send_message",
-    version = "3.1",
+    version = "3.2",
     packages = setuptools.find_packages(),
     author="bingyue",
     author_email="hello-yiqiu@qq.com",

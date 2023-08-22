@@ -1,14 +1,18 @@
-from asyncio.log import logger
+from nonebot.log import logger
 from nonebot import on_message, on_notice, on_command
 from nonebot.matcher import Matcher
 from nonebot.adapters.onebot.v11 import PrivateMessageEvent,PRIVATE,Bot,FriendAddNoticeEvent,Message
-from nonebot.params import CommandArg,Depends
+from nonebot.params import CommandArg
 from nonebot.permission import SUPERUSER
 from .config import Config
 from nonebot.plugin import PluginMetadata
+from nonebot import get_driver
+
+plugin_config = Config.parse_obj(get_driver().config.dict())
 
 
-if not Config.friend_list:
+
+if not plugin_config.send_message:
     logger.warning("未配置名单！")
 
 __plugin_meta__ = PluginMetadata(
@@ -21,8 +25,6 @@ __plugin_meta__ = PluginMetadata(
     supported_adapters={"~onebot.v11"}
 )
 
-async def dependency():
-    Matcher.skip()
 
 js = on_message(priority=5,permission=PRIVATE)
 b = on_notice(priority=4)
@@ -38,11 +40,12 @@ async def _(bot:Bot,matcher: Matcher,event:PrivateMessageEvent,c:Message = Comma
     await fs.finish("已发送！")
 
 @js.handle()
-async def _(bot:Bot, event: PrivateMessageEvent,check=Depends(dependency)):
-    for i in Config.friend_list:
+async def _(bot:Bot, event: PrivateMessageEvent):
+    print(1)
+    for i in plugin_config.send_message:
         await bot.send_private_msg(user_id=int(i),message=f"来自好友:{event.get_user_id()}\n"+event.get_message(),auto_escape=False)
     await js.finish()
 
 @b.handle()
 async def _(event:FriendAddNoticeEvent):
-    await b.finish(Message(Config.message))
+    await b.finish(Message(plugin_config.welcome))
