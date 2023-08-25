@@ -2,7 +2,7 @@
   <a href="https://v2.nonebot.dev/store"><img src="https://github.com/A-kirami/nonebot-plugin-template/blob/resources/nbp_logo.png" width="180" height="180" alt="NoneBotPluginLogo"></a>
 
 # NoneBot-Plugin-Send-Message
-_✨ 一个可以群昵称显示现在时间的插件 ✨_
+_✨ 一个支持双向聊天的传话插件，可用于临时聊天而不想加好友场景 ✨_
     <br></br>
 </div>
 
